@@ -1,12 +1,14 @@
 import React from "react";
-// import Counter from "./components/counter";
-import Page from "./components/page";
+import Counter from "./components/counter";
+// import Page from "./components/page";
+import CountersList from "./components/countersList";
 
 const App = () => {
   //   return <Counter />;
   return (
     <div className="App">
-      <Page />
+      <CountersList />
+      {/* <Page /> */}
     </div>
   );
 };
