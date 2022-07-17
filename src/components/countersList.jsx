@@ -10,6 +10,7 @@ const CountersList = () => {
     { id: 3, value: 0, name: "Тарелка" },
     { id: 4, value: 0, name: "Набор минималиста" },
   ];
+
   const [counters, setCounters] = useState(initialState);
 
   const handleDelete = (id) => {
@@ -17,6 +18,32 @@ const CountersList = () => {
     const newCounters = counters.filter((c) => c.id !== id);
     // console.log(newCounters);
     setCounters(newCounters);
+  };
+
+  const handleIncrement = (id) => {
+    setCounters((counters) =>
+      counters.map((counter) =>
+        counter.id === id
+          ? {
+              ...counter,
+              value: counter.value + 1,
+            }
+          : counter
+      )
+    );
+  };
+
+  const handleDecrement = (id) => {
+    setCounters((counters) =>
+      counters.map((counter) =>
+        counter.id === id
+          ? {
+              ...counter,
+              value: counter.value - 1,
+            }
+          : counter
+      )
+    );
   };
 
   const handleReset = () => {
@@ -33,6 +60,8 @@ const CountersList = () => {
           // value={count.value}
           // name={count.name}
           onDelete={handleDelete}
+          onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
           {...count} // позволяет не дублировать код, а выводить весь массив объектов
         />
       ))}
